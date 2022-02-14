@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">dayBook</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label">Название</string>
+    <string name="pick_time_start">Выберите время начала</string>
+    <string name="pick_time_finish">Выберите время окончания</string>
+    <string name="pick_date">Выберите дату</string>
+    <string name="description">Описание</string>
+    <string name="add">Добавить</string>
+
+</resources>
