@@ -1,4 +1,4 @@
-package com.example.daybook.presentation
+package com.example.daybook.presentation.eventList
 
 import android.view.LayoutInflater
 import android.view.View

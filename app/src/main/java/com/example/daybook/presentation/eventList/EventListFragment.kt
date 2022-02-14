@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.applandeo.materialcalendarview.CalendarView
 import com.example.daybook.presentation.DataViewModel
-import com.example.daybook.presentation.EventAdapter
-import com.example.daybook.presentation.EventClickListener
 import com.example.daybook.R
 import com.example.daybook.Utils.getFormattedDate
 import com.example.daybook.Utils.getFormattedHour

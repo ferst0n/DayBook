@@ -1,4 +1,4 @@
-package com.example.daybook.presentation
+package com.example.daybook.presentation.eventList
 
 import com.example.daybook.presentation.models.Event
 
