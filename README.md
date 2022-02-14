@@ -2,7 +2,7 @@
 
 # Requirements
 
-*Use jdk 11
+* Use jdk 11
 
 # Technologies and Libraries
 
