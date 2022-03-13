@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout-land/activity_main.xml" value="0.2125" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout-land/fragment_creating_event.xml" value="0.19607843137254902" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout-land/fragment_event_details.xml" value="0.22" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout-land/fragment_event_list.xml" value="0.33" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout/activity_main.xml" value="0.3875" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout/fragment_creating_event.xml" value="0.25" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout/fragment_event_details.xml" value="0.3875" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout/fragment_event_list.xml" value="0.3875" />
+        <entry key="..\:/Programs/Projects/DayBook/app/src/main/res/layout/text_row_item.xml" value="0.3875" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -6,12 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/blue_gray_500"
-    >
-
+    android:background="@color/blue_gray_500">
 
     <TextView
-
         android:background="@color/blue_gray_500"
         android:id="@+id/event_date"
         android:layout_width="wrap_content"
@@ -26,29 +23,24 @@
         android:layout_marginBottom="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/event_name">
-
+        >
     </TextView>
 
     <TextView
         android:background="@color/blue_gray_500"
         android:id="@+id/event_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/event_date"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-
-        tools:ignore="MissingConstraints"
-        app:layout_constraintHorizontal_bias="0"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:textColor="@color/white"
         android:textSize="20sp">
-
     </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

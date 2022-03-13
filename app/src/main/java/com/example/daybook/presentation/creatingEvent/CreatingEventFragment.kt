@@ -2,6 +2,7 @@ package com.example.daybook.presentation.creatingEvent
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,14 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.daybook.presentation.DataViewModel
 import com.example.daybook.R
+import com.example.daybook.Utils.getFormattedDateView
 import com.example.daybook.presentation.pikers.DatePickerFragment
 import com.example.daybook.presentation.pikers.TimePickerFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.sql.Timestamp
 
 
 @AndroidEntryPoint
 class  CreatingEventFragment:Fragment() {
-
 
     private lateinit var pickTimeStartButton:Button
     private lateinit var pickTimeFinishButton:Button
@@ -35,7 +35,9 @@ class  CreatingEventFragment:Fragment() {
     private lateinit var navController: NavController
     private val dataViewModel: DataViewModel by activityViewModels()
 
-
+    companion object{
+        val TRANSITION_DELAY: Long = 500
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,8 +53,6 @@ class  CreatingEventFragment:Fragment() {
         titleEditText = view.findViewById(R.id.title_edit_text)
         descriptionEditText = view.findViewById(R.id.description_edit_text)
 
-
-
         return view
     }
 
@@ -62,76 +62,122 @@ class  CreatingEventFragment:Fragment() {
         navController = Navigation.findNavController(view)
 
         pickTimeStartButton.setOnClickListener {
-            showTimePickerStartDialog(it)
+            showTimePickerStartDialog()
         }
         pickTimeFinishButton.setOnClickListener {
-            showTimePickerFinishDialog(it)
+            showTimePickerFinishDialog()
         }
         pickDateButton.setOnClickListener {
-            showDatePickerDialog(it)
+            showDatePickerDialog()
         }
 
+        dataViewModel.getDate().observe(viewLifecycleOwner){date ->
+            showPickedDate(date)
+        }
+
+        dataViewModel.getTimeStart().observe(viewLifecycleOwner){timeStart ->
+            showPickedTimeStart(timeStart)
+        }
+
+        dataViewModel.getTimeFinish().observe(viewLifecycleOwner){timeFinish ->
+            showPickedTimeFinish(timeFinish)
+        }
 
         addEventButton.setOnClickListener {
-
-            var eventName = titleEditText.text.toString()
-            var eventDescription = descriptionEditText.text.toString()
-            var eventDate = dataViewModel.date.value
-            var eventTimeStart = dataViewModel.timeStart.value
-            var eventTimeFinish = dataViewModel.timeFinish.value
-
-            if (eventName != "" && eventDate != "" && eventTimeStart != "" && eventTimeFinish != ""){
-
-                var timeStampStart = Timestamp.valueOf(eventDate+" "+eventTimeStart).time
-                var timeStampFinish = Timestamp.valueOf(eventDate+" "+eventTimeFinish).time
-
-                creatingEventViewModel.addNote(eventName, eventDescription,
-                    timeStampStart.toString(), timeStampFinish.toString()
-                )
-
-                Toast.makeText(context,"Задача добавлена", Toast.LENGTH_SHORT).show()
-                Handler().postDelayed({
-                    navController.navigate(R.id.action_creatingEventFragment_to_calendarFragment)
-                }, 500)
-
-            }else{
-
-                Toast.makeText(context,"Заполните все поля", Toast.LENGTH_SHORT).show()
-            }
-
+            addEvent()
         }
 
-    }
-
-
-    fun showTimePickerStartDialog(v: View) {
-
-        fragmentManager?.let { TimePickerFragment().show(it, "timePickerStart") }
-    }
-
-    fun showTimePickerFinishDialog(v: View) {
-
-        fragmentManager?.let { TimePickerFragment().show(it, "timePickerFinish") }
-    }
-
-    fun showDatePickerDialog(v: View) {
-
-        fragmentManager?.let { DatePickerFragment().show(it, "datePicker") }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        dataViewModel.date.value = ""
-        dataViewModel.timeStart.value = ""
-        dataViewModel.timeFinish.value = ""
     }
 
     override fun onResume() {
         super.onResume()
-        dataViewModel.date.value = ""
-        dataViewModel.timeStart.value = ""
-        dataViewModel.timeFinish.value = ""
+        backPressedHandle()
     }
+
+    private fun backPressedHandle(){
+        requireView().isFocusableInTouchMode = true
+        requireView().requestFocus()
+        requireView().setOnKeyListener { v, keyCode, event ->
+            if (event.action === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+
+                dataViewModel.setDate("")
+                dataViewModel.setTimeStart("")
+                dataViewModel.setTimeFinish("")
+                navController.navigate(R.id.action_creatingEventFragment_to_calendarFragment)
+
+                true
+            } else false
+        }
+    }
+
+    private fun showPickedDate(date:String){
+        if (dataViewModel.getDate().value != "") {
+
+            pickDateButton.text = getFormattedDateView(date)
+
+        }else { pickDateButton.text = getString(R.string.pick_date) }
+    }
+
+    private fun showPickedTimeStart(timeStart:String){
+        if (dataViewModel.getTimeStart().value != "") {
+
+            pickTimeStartButton.text = timeStart
+
+        } else{pickTimeStartButton.text = getString(R.string.pick_time_start)}
+    }
+
+    private fun showPickedTimeFinish(timeFinish:String){
+        if (dataViewModel.getTimeFinish().value != ""){
+
+            pickTimeFinishButton.text = timeFinish
+
+        }else{pickTimeFinishButton.text = getString(R.string.pick_time_finish)}
+    }
+
+    private fun addEvent(){
+        var eventName = titleEditText.text.toString()
+        var eventDescription = descriptionEditText.text.toString()
+        var eventDate = dataViewModel.getDate().value.toString()
+        var eventTimeStart = dataViewModel.getTimeStart().value.toString()
+        var eventTimeFinish = dataViewModel.getTimeFinish().value.toString()
+
+        if (eventName != "" && eventDate != "" && eventTimeStart != "" && eventTimeFinish != ""){
+
+            creatingEventViewModel.addEvent(eventName, eventDescription,
+                eventDate, eventTimeStart, eventTimeFinish
+            )
+
+            Toast.makeText(context,R.string.add_event, Toast.LENGTH_SHORT).show()
+
+            dataViewModel.setDate("")
+            dataViewModel.setTimeStart("")
+            dataViewModel.setTimeFinish("")
+            Handler().postDelayed({
+                navController.navigate(R.id.action_creatingEventFragment_to_calendarFragment)
+            }, TRANSITION_DELAY)
+
+        }else{
+
+            Toast.makeText(context,R.string.fill_field, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showTimePickerStartDialog() {
+
+        TimePickerFragment().show(childFragmentManager,R.string.time_picker_start.toString())
+    }
+
+    private fun showTimePickerFinishDialog() {
+
+        TimePickerFragment().show(childFragmentManager, R.string.time_picker_finish.toString())
+    }
+
+    private fun showDatePickerDialog() {
+
+        DatePickerFragment().show(childFragmentManager, R.string.date_picker.toString())
+    }
+
+
 
 
 }

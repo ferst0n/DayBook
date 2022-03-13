@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#546E7A"
+    tools:context=".presentation.eventList.EventListFragment">
+
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:abbreviationsBarColor="@color/blue_gray_600"
+        app:abbreviationsLabelsColor="@color/white"
+        app:anotherMonthsDaysLabelsColor="#90A4AE"
+        app:daysLabelsColor="@color/white"
+        app:forwardButtonSrc="@drawable/ic_baseline_forward_button"
+        app:headerColor="@color/blue_gray_600"
+        app:headerLabelColor="@color/white"
+        app:layout_constraintHorizontal_weight="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/evenList"
+        app:pagesColor="@color/blue_gray_600"
+        app:previousButtonSrc="@drawable/ic_baseline_previous_button"
+        app:selectionColor="@color/light_orange"
+        app:selectionLabelColor="@color/white"
+        app:todayLabelColor="@color/white"
+        app:type="one_day_picker">
+
+    </com.applandeo.materialcalendarview.CalendarView>
+
+    <TextView
+        android:id="@+id/title_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Список дел"
+        android:textColor="@color/white"
+        app:layout_constraintVertical_weight="0.1"
+        app:layout_constraintHorizontal_weight="0.6"
+        android:layout_marginBottom="16dp"
+        android:textSize="32sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/calendarView"
+        app:layout_constraintBottom_toTopOf="@id/evenList"
+        android:layout_marginStart="16dp">
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/evenList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_weight="0.6"
+        app:layout_constraintVertical_weight="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/title_recycler"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/light_orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus_24" >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

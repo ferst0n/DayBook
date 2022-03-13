@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         app:forwardButtonSrc="@drawable/ic_baseline_forward_button"
         app:previousButtonSrc="@drawable/ic_baseline_previous_button"
-
         app:headerColor="@color/blue_gray_600"
         app:daysLabelsColor="@color/white"
         app:selectionLabelColor="@color/white"
@@ -25,7 +24,6 @@
         app:abbreviationsBarColor="@color/blue_gray_600"
         app:todayLabelColor="@color/white"
         app:anotherMonthsDaysLabelsColor="#90A4AE"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,16 +41,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-
-
         android:text="Список дел"
         android:textSize="32sp"
         android:textColor="@color/white">
-
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:id="@+id/evenList"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -60,7 +54,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_recycler">
+        app:layout_constraintTop_toBottomOf="@+id/title_recycler"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -72,8 +68,10 @@
         android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_plus_24"
-        />
+        app:srcCompat="@drawable/ic_plus_24">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

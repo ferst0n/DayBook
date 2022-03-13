@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daybook.R
-import com.example.daybook.presentation.models.Event
+import com.example.daybook.domain.entity.Event
 
-class EventAdapter(private var eventClickListener: EventClickListener): RecyclerView.Adapter<EventAdapter.ViewHolder>() {
+class EventAdapter(private var eventClickListener: EventClickListener)
+    :RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
     var mEvents: ArrayList<Event> = ArrayList()
 
     fun setData(newEvents: List<Event>){
         mEvents.clear()
         mEvents.addAll(newEvents)
-
         notifyDataSetChanged()
     }
 
@@ -36,7 +36,6 @@ class EventAdapter(private var eventClickListener: EventClickListener): Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(Event = mEvents[position])
 
-
         holder.itemView.setOnClickListener {
             eventClickListener.onItemClick(mEvents[position])
         }
@@ -50,19 +49,12 @@ class EventAdapter(private var eventClickListener: EventClickListener): Recycler
         fun bind(Event: Event){
             eventName.text =Event.name
             date.text = Event.time_start+" - "+Event.time_finish
-
         }
-
 
         init {
             eventName = view.findViewById(R.id.event_name)
             date = view.findViewById(R.id.event_date)
 
         }
-
-
     }
-
-
-
 }

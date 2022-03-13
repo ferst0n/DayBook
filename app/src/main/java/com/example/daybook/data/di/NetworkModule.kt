@@ -1,6 +1,7 @@
 package com.example.daybook.data.di
 
 import android.content.Context
+import com.example.daybook.R
 import com.example.daybook.data.localDataSource.LocalDataSource
 import com.example.daybook.data.repository.Repository
 import dagger.Module
@@ -24,7 +25,7 @@ object NetworkModule {
         Realm.init(context)
         val realmConfiguration = RealmConfiguration
             .Builder()
-            .name("dayBook")
+            .name(R.string.app_name.toString())
             .build()
         Realm.setDefaultConfiguration(realmConfiguration)
         return Realm.getDefaultInstance()
@@ -32,9 +33,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRepository(localDataSource: LocalDataSource) = Repository(localDataSource)
-
-
+    fun provideRepository(localDataSource: LocalDataSource) =
+        Repository(localDataSource) as com.example.daybook.domain.repository.Repository
 
 }
 

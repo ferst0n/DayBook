@@ -4,10 +4,10 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.example.daybook.R
 import com.example.daybook.presentation.DataViewModel
 import java.util.*
 
@@ -28,22 +28,12 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-        var time = hourOfDay.toString() + ":" + minute.toString() + ":" + "0"
+        var time = hourOfDay.toString() + ":" + minute.toString()
 
-        Log.d("selectedTime", time)
-        Log.d("TAG", tag.toString())
-
-        if (tag.toString() == "timePickerStart"){
-
-            dataViewModel.timeStart.value = time
-
-        }else if (tag.toString() == "timePickerFinish"){
-
-            dataViewModel.timeFinish.value = time
-
+        if (tag == R.string.time_picker_start.toString()){
+            dataViewModel.setTimeStart(time)
+        }else if (tag == R.string.time_picker_finish.toString()){
+            dataViewModel.setTimeFinish(time)
         }
-
     }
-
-
 }

@@ -1,92 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/blue_gray_600">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title_textField"
-
         app:boxBackgroundColor="@color/blue_gray_500"
-
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/label"
-
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
-
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        >
+        app:layout_constraintTop_toTopOf="@+id/guideline">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title_edit_text"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck"
+            android:maxLength="50"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/pick_date_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/pick_date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_textField"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
-        style="?attr/materialButtonOutlinedStyle"
         android:backgroundTint="@color/blue_gray_500"
-        >
-
+        android:textColor="@color/white"
+        android:text = "@string/pick_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_textField"
+        tools:ignore="TextContrastCheck">
     </Button>
 
     <Button
         android:id="@+id/pick_timeStart_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/pick_time_start"
-        android:onClick="showTimePickerDialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pick_date_button"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/blue_gray_500"
+        android:onClick="showTimePickerDialog"
+        android:text="@string/pick_time_start"
         android:textColor="@color/white"
-        style="?attr/materialButtonOutlinedStyle"
-        android:backgroundTint="@color/blue_gray_500">
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pick_date_button"
+        tools:ignore="TextContrastCheck">
     </Button>
 
     <Button
         android:id="@+id/pick_timeFinish_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/pick_time_finish"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pick_timeStart_button"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        style="?attr/materialButtonOutlinedStyle"
-        android:backgroundTint="@color/blue_gray_500">
-        android:textColor="@color/white"
-
-
+        android:backgroundTint="@color/blue_gray_500"
+        android:text="@string/pick_time_finish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pick_timeStart_button"
+        tools:ignore="TextContrastCheck"
+        android:textColor="@color/white">
     </Button>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,34 +95,32 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
-        app:boxBackgroundColor="@color/blue_gray_500"
-
-        >
+        app:boxBackgroundColor="@color/blue_gray_500">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:maxLength="150"
+
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/add_event_button"
         style="?attr/materialButtonOutlinedStyle"
-        android:backgroundTint="@color/light_orange"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/light_orange"
         android:text="@string/add"
-        app:layout_constraintTop_toBottomOf="@+id/description_textField"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp">
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="TextContrastCheck">
     </Button>
 
     <androidx.constraintlayout.widget.Guideline
@@ -136,7 +128,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.25">
+
+    </androidx.constraintlayout.widget.Guideline>
 
 
 

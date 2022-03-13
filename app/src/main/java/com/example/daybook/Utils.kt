@@ -20,23 +20,39 @@ object Utils {
         return simpleDateFormat.toInt()
     }
 
+    fun getFormattedTime(time: String):String {
+        val formattedTime = time + ":" + "0"
+        return formattedTime
+    }
+
+    fun getFormattedDateView(s: String): String {
+        return try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd")
+            val outputFormat = SimpleDateFormat("dd MMMM yyyy")
+            val objDate :Date = inputFormat.parse(s)
+            outputFormat.format(objDate)
+        } catch (e: Exception) {
+            e.toString()
+        }
+    }
+
     fun getDate(s: String): String {
-        try {
+        return try {
             val sdf = SimpleDateFormat("dd-MM-yyyy")
             val netDate = java.sql.Date(s.toLong())
-            return sdf.format(netDate)
+            sdf.format(netDate)
         } catch (e: Exception) {
-            return e.toString()
+            e.toString()
         }
     }
 
     fun getTime(s: String): String {
-        try {
+        return try {
             val sdf = SimpleDateFormat("HH:mm")
             val netDate = java.sql.Date(s.toLong())
-            return sdf.format(netDate)
+            sdf.format(netDate)
         } catch (e: Exception) {
-            return e.toString()
+            e.toString()
         }
     }
 

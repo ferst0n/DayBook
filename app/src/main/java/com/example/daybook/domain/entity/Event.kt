@@ -1,4 +1,4 @@
-package com.example.daybook.presentation.models
+package com.example.daybook.domain.entity
 
 
 
@@ -10,5 +10,4 @@ data class Event(
     val time_finish:String,
     val name:String,
     val descriotion:String?
-
 )

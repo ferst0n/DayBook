@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import com.example.daybook.presentation.DataViewModel
 import com.example.daybook.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +20,9 @@ class EventDetailsFragment(): Fragment() {
     private lateinit var dateFinish:TextView
     private lateinit var description:TextView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_event_details, container, false)
 
@@ -30,21 +31,18 @@ class EventDetailsFragment(): Fragment() {
         dateFinish = view.findViewById(R.id.date_finish)
         description = view.findViewById(R.id.description)
 
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataViewModel.data.observe(activity as LifecycleOwner,{
-
-            title.text = it.name
-            dateStart.text = it.date_start + " " + it.time_start
-            dateFinish.text = it.date_finish + " " + it.time_finish
-            description.text = it.descriotion
-
-        })
+        dataViewModel.data.observe(viewLifecycleOwner) { event ->
+            title.text = event.name
+            dateStart.text = event.date_start + " " + event.time_start
+            dateFinish.text = event.date_finish + " " + event.time_finish
+            description.text = event.descriotion
+        }
     }
 
 }

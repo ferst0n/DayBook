@@ -8,5 +8,10 @@
     <string name="pick_date">Выберите дату</string>
     <string name="description">Описание</string>
     <string name="add">Добавить</string>
+    <string name="add_event">Задача добавлена</string>
+    <string name="fill_field">Заполните все поля</string>
+    <string name="time_picker_start">timePickerStart</string>
+    <string name="time_picker_finish">timePickerFinish</string>
+    <string name="date_picker">datePicker</string>
 
 </resources>

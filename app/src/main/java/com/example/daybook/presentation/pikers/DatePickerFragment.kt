@@ -3,7 +3,6 @@ package com.example.daybook.presentation.pikers
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
@@ -13,7 +12,6 @@ import java.util.*
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     private val dataViewModel: DataViewModel by activityViewModels()
-
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker
@@ -29,9 +27,6 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 
         var date = year.toString()+ "-" + (month+1).toString() + "-" + day.toString()
-
-        Log.d("selectedDate", date)
-
-        dataViewModel.date.value = date
-      }
+        dataViewModel.setDate(date)
+    }
 }
