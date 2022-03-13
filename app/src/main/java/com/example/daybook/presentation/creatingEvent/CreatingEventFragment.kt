@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.daybook.presentation.DataViewModel
 import com.example.daybook.R
-import com.example.daybook.Utils.getFormattedDateView
+import com.example.daybook.presentation.Utils.getFormattedDateView
 import com.example.daybook.presentation.pikers.DatePickerFragment
 import com.example.daybook.presentation.pikers.TimePickerFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -146,9 +146,7 @@ class  CreatingEventFragment:Fragment() {
             creatingEventViewModel.addEvent(eventName, eventDescription,
                 eventDate, eventTimeStart, eventTimeFinish
             )
-
             Toast.makeText(context,R.string.add_event, Toast.LENGTH_SHORT).show()
-
             dataViewModel.setDate("")
             dataViewModel.setTimeStart("")
             dataViewModel.setTimeFinish("")

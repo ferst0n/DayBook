@@ -2,7 +2,7 @@ package com.example.daybook.presentation.creatingEvent
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.daybook.Utils.getFormattedTime
+import com.example.daybook.presentation.Utils.getFormattedTime
 import com.example.daybook.domain.useCase.AddEventUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

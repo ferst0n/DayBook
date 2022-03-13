@@ -41,7 +41,7 @@ class EventDetailsFragment(): Fragment() {
             title.text = event.name
             dateStart.text = event.date_start + " " + event.time_start
             dateFinish.text = event.date_finish + " " + event.time_finish
-            description.text = event.descriotion
+            description.text = event.description
         }
     }
 

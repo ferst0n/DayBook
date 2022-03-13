@@ -1,7 +1,7 @@
 package com.example.daybook.data.localDataSource
 
-import com.example.daybook.Utils.getDate
-import com.example.daybook.Utils.getTime
+import com.example.daybook.presentation.Utils.getDate
+import com.example.daybook.presentation.Utils.getTime
 import com.example.daybook.data.model.EventDB
 import com.example.daybook.domain.entity.Event
 import io.realm.Realm

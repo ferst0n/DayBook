@@ -1,6 +1,7 @@
 package com.example.daybook.presentation.eventList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +17,9 @@ import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
 import com.example.daybook.presentation.DataViewModel
 import com.example.daybook.R
-import com.example.daybook.Utils.getFormattedDate
-import com.example.daybook.Utils.getFormattedHour
-import com.example.daybook.Utils.getFormattedMinute
+import com.example.daybook.presentation.Utils.getFormattedDate
+import com.example.daybook.presentation.Utils.getFormattedHour
+import com.example.daybook.presentation.Utils.getFormattedMinute
 import com.example.daybook.domain.entity.Event
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
@@ -92,6 +93,7 @@ class EventListFragment: Fragment(), EventClickListener {
 
     private fun showEventList(events: List<Event>) {
         val currentDate = Date()
+        Log.d("currentDate", currentDate.toString())
         mEvents.clear()
         for (event in events) {
             if (event.date_start == getFormattedDate(currentDate)!!) {

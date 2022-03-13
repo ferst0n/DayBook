@@ -9,5 +9,5 @@ data class Event(
     val time_start: String,
     val time_finish:String,
     val name:String,
-    val descriotion:String?
+    val description:String?
 )
